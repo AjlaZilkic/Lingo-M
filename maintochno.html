@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINGO M — Certified Translations, Skopje</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #86a2e3;
+            --blue-dark: #6b8bd5;
+            --blue-light: #eff6ff;
+            --blue-mid: #dbeafe;
+            --ink: #111827;
+            --ink2: #374151;
+            --mid: #6b7280;
+            --light: #9ca3af;
+            --rule: #e5e7eb;
+            --bg: #f9fafb;
+            --hero-bg: #f8f7f4;
+            --white: #ffffff;
+            --green: #72ab86;
+            --green-bg: #f0fdf4;
+            --sans: 'Inter', system-ui, sans-serif;
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;font-size:16px}
+        body{font-family:var(--sans);background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        img{display:block;max-width:100%}
+        a{color:inherit;text-decoration:none}
+        ::-webkit-scrollbar{width:4px}
+        ::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+
+        /* ══ NAV ══ */
+        nav{
+            position:fixed;top:0;left:0;right:0;z-index:900;
+            display:flex;align-items:center;justify-content:space-between;
+            padding:0 2.5rem;height:63px;
+            background:rgba(255,255,255,0.98);
+            border-bottom:1px solid var(--rule);
+            backdrop-filter:blur(10px);
+        }
+        .nav-logo{
+            display:flex;align-items:center;gap:9px;
+            font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;color:var(--ink);
+        }
+        .nav-logo-icon{
+            width:34px;height:34px;background:var(--blue);border-radius:8px;
+            display:flex;align-items:center;justify-content:center;
+            color:#fff;font-size:0.75rem;font-weight:700;letter-spacing:0.02em;
+        }
+        .nav-logo-text span{color:var(--blue)}
+        .nav-center{display:flex;gap:0.1rem;list-style:none}
+        .nav-center a{
+            font-size:0.875rem;font-weight:500;color:var(--mid);
+            padding:0.4rem 0.4rem;border-radius:6px;
+            transition:background 0.15s,color 0.15s;
+        }
+        .nav-center a:hover{background:var(--bg);color:var(--ink)}
+        .nav-right{display:flex;align-items:center;gap:0.6rem}
+        .btn{
+            display:inline-flex;align-items:center;gap:6px;
+            font-family:var(--sans);font-size:0.875rem;font-weight:600;
+            padding:0.55rem 1.2rem;border-radius:8px;
+            transition:all 0.18s;cursor:pointer;border:none;
+        }
+        .btn-primary{background:var(--blue);color:#fff}
+        .btn-primary:hover{background:var(--blue-dark)}
+        .btn-ghost{background:transparent;color:var(--ink2);border:1px solid var(--rule)}
+        .btn-ghost:hover{background:var(--bg);border-color:#d1d5db}
+        .btn-white{background:#fff;color:var(--blue);border:1px solid #fff}
+        .btn-white:hover{background:var(--blue-light)}
+        .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:6px}
+        .hamburger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.3s}
+
+        /* ══ HERO — RushTranslate-style split layout ══ */
+        .hero{
+            min-height:100vh;
+            background:var(--hero-bg);
+            display:flex;align-items:center;
+            padding-top:68px;
+        }
+        .hero-inner{
+            max-width:1280px;margin:0 auto;width:100%;
+            display:grid;grid-template-columns:1fr 1fr;
+            gap:4rem;align-items:center;
+            padding:5rem 2.5rem 4rem;
+        }
+        .hero-left{padding-right:1rem}
+        .hero-badge{
+            display:inline-flex;align-items:center;gap:7px;
+            background:var(--white);border:1px solid var(--rule);
+            border-radius:100px;padding:5px 14px 5px 8px;
+            font-size:0.78rem;font-weight:500;color:var(--green);
+            margin-bottom:1.75rem;box-shadow:0 1px 3px rgba(0,0,0,0.05);
+        }
+        .hero-badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+        .hero h1{
+            font-size:clamp(2.6rem,4.5vw,4rem);font-weight:500;
+            line-height:1.08;letter-spacing:-0.035em;
+            color:var(--ink);margin-bottom:0.3rem;
+        }
+        .hero h1 .accent{
+            color:transparent;
+            background:linear-gradient(135deg,#7c9ff5 0%,#b0c4f7 100%);
+            -webkit-background-clip:text;background-clip:text;
+            font-style:italic;
+        }
+        .hero-sub{
+            font-size:1rem;font-weight:400;color:var(--mid);
+            line-height:1.75;max-width:480px;margin:1.5rem 0 2.25rem;
+        }
+        .hero-actions{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:2.5rem}
+        .btn-lg{font-size:0.95rem;padding:0.78rem 1.6rem;border-radius:9px}
+        .btn-hero-primary{
+            background:var(--ink);color:#fff;
+            font-size:0.95rem;padding:0.78rem 1.6rem;border-radius:9px;
+            display:inline-flex;align-items:center;gap:8px;
+            font-weight:600;transition:background 0.18s;cursor:pointer;border:none;
+        }
+        .btn-hero-primary:hover{background:#1f2937}
+        .btn-hero-ghost{
+            background:transparent;color:var(--ink);border:1.5px solid #d1d5db;
+            font-size:0.95rem;padding:0.78rem 1.6rem;border-radius:9px;
+            display:inline-flex;align-items:center;gap:8px;
+            font-weight:600;transition:all 0.18s;cursor:pointer;
+        }
+        .btn-hero-ghost:hover{border-color:var(--ink);background:var(--white)}
+        .hero-rating{
+            display:flex;align-items:center;gap:10px;
+            font-size:0.83rem;color:var(--mid);
+        }
+        .hero-stars{color:#f59e0b;font-size:0.8rem;letter-spacing:1px}
+        .hero-rating strong{color:var(--ink)}
+        .hero-rating-sep{color:var(--rule)}
+
+        /* HERO RIGHT — image grid */
+        .hero-right{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            grid-template-rows:auto auto;
+            gap:12px;
+            height:520px;
+        }
+        .hero-img{
+            border-radius:18px;overflow:hidden;
+            background:#e5e7eb;
+        }
+        .hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease}
+        .hero-img:hover img{transform:scale(1.04)}
+        .hero-img-tall{grid-row:1/3}
+        .hero-img-sm{height:auto}
+
+        /* ══ TRUSTED COMPANIES ══ */
+        .trusted{
+            background:var(--white);
+            border-top:1px solid var(--rule);
+            border-bottom:1px solid var(--rule);
+            padding:2.5rem 2.5rem;
+        }
+        .trusted-inner{max-width:1280px;margin:0 auto}
+        .trusted-label{
+            text-align:center;
+            font-size:0.73rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+            color:var(--light);margin-bottom:2rem;
+        }
+        .trusted-logos{
+            display:flex;align-items:center;justify-content:center;
+            gap:0;flex-wrap:nowrap;
+        }
+        .trusted-logo{
+            flex:1;display:flex;align-items:center;justify-content:center;
+            padding:0.75rem 1.5rem;
+            border-right:1px solid var(--rule);
+        }
+        .trusted-logo:last-child{border-right:none}
+        .trusted-logo-inner{
+            display:flex;align-items:center;gap:8px;
+            opacity:0.4;filter:grayscale(1);
+            transition:opacity 0.25s,filter 0.25s;
+        }
+        .trusted-logo-inner:hover{opacity:0.75;filter:grayscale(0.3)}
+        .trusted-logo-icon{
+            width:32px;height:32px;border-radius:7px;
+            display:flex;align-items:center;justify-content:center;
+            font-size:0.8rem;font-weight:800;color:#fff;flex-shrink:0;
+        }
+        .trusted-logo-name{
+            font-size:0.88rem;font-weight:700;color:var(--ink);
+            letter-spacing:-0.01em;white-space:nowrap;
+        }
+        .trusted-logo-sub{
+            font-size:0.65rem;font-weight:500;color:var(--mid);
+            text-transform:uppercase;letter-spacing:0.06em;
+        }
+
+        /* ══ MARQUEE ══ */
+        .marquee{overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:0.85rem 0;background:var(--bg)}
+        .marquee-inner{display:flex;width:max-content;animation:marquee 40s linear infinite}
+        .marquee-item{display:flex;align-items:center;gap:0.85rem;padding:0 1.5rem;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);white-space:nowrap}
+        .marquee-dot{width:3px;height:3px;background:var(--blue);border-radius:50%}
+        @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+        /* ══ SECTION ══ */
+        .section{padding:6rem 2.5rem}
+        .section-inner{max-width:1280px;margin:0 auto}
+        .section-label{
+            display:inline-flex;align-items:center;gap:6px;
+            font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+            color:var(--blue);background:var(--blue-light);
+            padding:4px 12px;border-radius:100px;margin-bottom:1.1rem;
+        }
+        .section-h{
+            font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;
+            letter-spacing:-0.025em;line-height:1.15;color:var(--ink);
+            margin-bottom:1rem;
+        }
+        .section-sub{font-size:0.95rem;color:var(--mid);line-height:1.75;max-width:480px}
+        .section-header{
+            display:flex;justify-content:space-between;
+            align-items:flex-end;gap:2rem;flex-wrap:wrap;
+            margin-bottom:3rem;
+        }
+
+        /* ══ STATS STRIP ══ */
+        .stats-strip{background:var(--blue);padding:3rem 2.5rem}
+        .stats-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+        .stat-item{text-align:center;padding:0 1rem;border-right:1px solid rgba(255,255,255,0.15)}
+        .stat-item:last-child{border-right:none}
+        .stat-n{font-size:2.25rem;font-weight:700;color:#fff;line-height:1;margin-bottom:0.3rem;letter-spacing:-0.03em}
+        .stat-l{font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:0.08em}
+
+        /* ══ PROCESS ══ */
+        .process{background:var(--bg);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+        .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-top:2.5rem}
+        .step{background:var(--white);padding:2rem 1.75rem;transition:background 0.2s}
+        .step:hover{background:var(--blue-light)}
+        .step-n{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;background:var(--blue-light);border-radius:8px;font-size:0.78rem;font-weight:700;color:var(--blue);margin-bottom:1.1rem}
+        .step h4{font-size:0.9rem;font-weight:600;color:var(--ink);margin-bottom:0.45rem}
+        .step p{font-size:0.82rem;color:var(--mid);line-height:1.7}
+
+        /* ══ LANGUAGES ══ */
+        .languages{background:var(--white)}
+        .lang-carousel-wrap{position:relative;overflow:hidden;margin-top:2rem}
+        .lang-fade-l{position:absolute;top:0;bottom:0;left:0;width:60px;background:linear-gradient(to right,var(--white),transparent);z-index:2;pointer-events:none}
+        .lang-fade-r{position:absolute;top:0;bottom:0;right:0;width:60px;background:linear-gradient(to left,var(--white),transparent);z-index:2;pointer-events:none}
+        .lang-track{display:flex;gap:12px;padding:4px 0 20px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;cursor:grab}
+        .lang-track::-webkit-scrollbar{display:none}
+        .lang-track.dragging{cursor:grabbing;scroll-behavior:auto}
+        .lang-card{flex-shrink:0;width:180px;border:1px solid var(--rule);border-radius:12px;overflow:hidden;transition:all 0.25s;background:var(--white)}
+        .lang-card:hover{box-shadow:0 8px 24px rgba(37,99,235,0.12);border-color:#bfdbfe;transform:translateY(-3px)}
+        .lang-card img{width:100%;height:110px;object-fit:cover;transition:transform 0.4s}
+        .lang-card:hover img{transform:scale(1.05)}
+        .lang-card-body{padding:0.85rem 1rem}
+        .lang-name{font-size:0.9rem;font-weight:600;color:var(--ink);margin-bottom:2px}
+        .lang-region{font-size:0.7rem;color:var(--mid)}
+        .lang-code{display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;color:var(--blue);background:var(--blue-light);padding:1px 7px;border-radius:4px;margin-bottom:5px}
+        .lang-nav{display:flex;gap:6px;align-items:center}
+        .lang-nav-btn{width:34px;height:34px;border:1px solid var(--rule);border-radius:8px;color:var(--mid);background:var(--white);cursor:pointer;font-size:0.85rem;transition:all 0.18s;display:flex;align-items:center;justify-content:center}
+        .lang-nav-btn:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+
+        /* ══ DOC TYPES ══ */
+        .docs{background:var(--bg)}
+        .docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+        .doc-card{background:var(--white);border:1px solid var(--rule);border-radius:12px;overflow:hidden;transition:all 0.22s;display:flex;flex-direction:column}
+        .doc-card:hover{box-shadow:0 8px 28px rgba(0,0,0,0.07);border-color:#d1d5db;transform:translateY(-2px)}
+        .doc-img{width:100%;height:160px;overflow:hidden;flex-shrink:0}
+        .doc-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 0.4s}
+        .doc-card:hover .doc-img img{transform:scale(1.04)}
+        .doc-body{padding:1.4rem;flex:1;display:flex;flex-direction:column}
+        .doc-tag{display:inline-flex;align-items:center;font-size:0.68rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--blue);background:var(--blue-light);padding:2px 8px;border-radius:4px;margin-bottom:0.65rem;width:fit-content}
+        .doc-card h3{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:0.45rem}
+        .doc-card p{font-size:0.82rem;color:var(--mid);line-height:1.7;margin-bottom:1rem}
+        .doc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto}
+        .doc-pill{font-size:0.68rem;font-weight:500;color:var(--mid);background:var(--bg);border:1px solid var(--rule);padding:2px 9px;border-radius:100px}
+
+        /* ══ WHY ══ */
+        .why{background:var(--white)}
+        .why-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+        .why-img{width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--rule);box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+        .why-img img{width:100%;height:100%;object-fit:cover;display:block}
+        .why-features{display:flex;flex-direction:column;gap:0}
+        .why-feature{display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid var(--rule)}
+        .why-feature:first-child{padding-top:0}
+        .why-feature:last-child{border-bottom:none}
+        .why-icon{width:40px;height:40px;background:var(--blue-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:1px}
+        .why-text h4{font-size:0.9rem;font-weight:600;color:var(--ink);margin-bottom:0.3rem}
+        .why-text p{font-size:0.82rem;color:var(--mid);line-height:1.7}
+
+        /* ══ REVIEWS ══ */
+        .reviews{background:var(--bg)}
+        .reviews-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:center}
+        .reviews-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-top:2rem}
+        .rt-item{background:var(--white);padding:1.25rem 1rem;text-align:center}
+        .rt-n{font-size:1.4rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em;margin-bottom:2px}
+        .rt-l{font-size:0.7rem;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid)}
+        .reviews-slider{overflow:hidden}
+        .reviews-track{display:flex;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1)}
+        .review-slide{flex-shrink:0;width:100%;background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:2rem}
+        .review-stars{color:#f59e0b;font-size:0.75rem;letter-spacing:2px;margin-bottom:1.1rem}
+        .review-text{font-size:0.95rem;font-weight:400;line-height:1.75;color:var(--ink2);margin-bottom:1.5rem}
+        .review-author{display:flex;align-items:center;gap:0.75rem}
+        .review-av{width:38px;height:38px;background:var(--blue-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:600;color:var(--blue);flex-shrink:0}
+        .review-name{font-size:0.82rem;font-weight:600;color:var(--ink);margin-bottom:1px}
+        .review-role{font-size:0.72rem;color:var(--mid)}
+        .review-src{font-size:0.68rem;font-weight:600;color:var(--blue);margin-top:2px}
+        .reviews-controls{display:flex;align-items:center;gap:0.75rem;margin-top:1rem}
+        .rev-btn{width:34px;height:34px;border:1px solid var(--rule);border-radius:8px;background:var(--white);color:var(--mid);cursor:pointer;font-size:0.85rem;transition:all 0.18s;display:flex;align-items:center;justify-content:center}
+        .rev-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+        .rev-dots{display:flex;gap:4px}
+        .rev-dot{width:6px;height:6px;border-radius:50%;background:var(--rule);border:none;cursor:pointer;transition:all 0.25s}
+        .rev-dot.active{background:var(--blue);width:18px;border-radius:3px}
+
+        /* ══ CONTACT ══ */
+        .contact{background:var(--white)}
+        .contact-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:5rem;align-items:start}
+        .contact-detail-list{margin-top:2rem;display:flex;flex-direction:column;gap:0}
+        .cdetail{display:flex;align-items:flex-start;gap:0.85rem;padding:1rem 0;border-bottom:1px solid var(--rule)}
+        .cdetail:first-child{border-top:1px solid var(--rule)}
+        .cdetail-icon{width:36px;height:36px;background:var(--blue-light);border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:0.85rem;margin-top:1px}
+        .cdetail-label{font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);margin-bottom:2px}
+        .cdetail-val{font-size:0.87rem;color:var(--ink)}
+        .cdetail-val a{color:var(--ink);transition:color 0.15s}
+        .cdetail-val a:hover{color:var(--blue)}
+        .wa-strip{margin-top:1.75rem;background:var(--green);border-radius:12px;padding:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+        .wa-strip-text h4{font-size:0.95rem;font-weight:600;color:#fff;margin-bottom:2px}
+        .wa-strip-text p{font-size:0.78rem;color:rgba(255,255,255,0.7)}
+        .wa-strip-btn{display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:var(--green);background:#fff;padding:0.6rem 1.1rem;border-radius:8px;white-space:nowrap;flex-shrink:0;transition:background 0.15s}
+        .wa-strip-btn:hover{background:#f0fdf4}
+        .contact-form{background:var(--white);border:1px solid var(--rule);border-radius:16px;padding:2rem}
+        .contact-form h3{font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:1.75rem;letter-spacing:-0.02em}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin-bottom:0.85rem}
+        .fg{display:flex;flex-direction:column;gap:5px;margin-bottom:0.85rem}
+        .fg label{font-size:0.73rem;font-weight:600;color:var(--ink2)}
+        .fg input,.fg select,.fg textarea{padding:0.65rem 0.85rem;border:1px solid var(--rule);border-radius:8px;font-family:var(--sans);font-size:0.875rem;color:var(--ink);background:var(--white);outline:none;transition:border-color 0.18s,box-shadow 0.18s;-webkit-appearance:none;appearance:none}
+        .fg input::placeholder,.fg textarea::placeholder{color:#d1d5db}
+        .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,0.1)}
+        .fg textarea{resize:vertical;min-height:88px}
+        .fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.85rem center;padding-right:2.25rem;cursor:pointer}
+        .file-area{border:2px dashed var(--rule);border-radius:8px;padding:1.1rem;text-align:center;cursor:pointer;font-size:0.82rem;color:var(--mid);transition:border-color 0.18s,background 0.18s}
+        .file-area:hover{border-color:var(--blue);background:var(--blue-light)}
+        .file-area input{display:none}
+        .form-submit{width:100%;padding:0.8rem;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.18s;margin-top:0.1rem}
+        .form-submit:hover{background:var(--blue-dark)}
+        .form-note{text-align:center;font-size:0.72rem;color:var(--mid);margin-top:0.55rem}
+
+        /* ══ CTA ══ */
+        .cta{background:var(--blue);padding:6rem 2.5rem;text-align:center}
+        .cta h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:700;color:#fff;letter-spacing:-0.03em;margin-bottom:1rem}
+        .cta p{font-size:1rem;color:rgba(255,255,255,0.75);max-width:480px;margin:0 auto 2.25rem;line-height:1.7}
+        .cta-actions{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
+        .btn-outline-white{color:rgba(255,255,255,0.8);background:transparent;border:1px solid rgba(255,255,255,0.3);border-radius:9px;padding:0.7rem 1.4rem;font-size:0.9rem;font-weight:600;transition:all 0.18s;display:inline-flex;align-items:center;gap:6px}
+        .btn-outline-white:hover{background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.6)}
+
+        /* ══ MAP ══ */
+        .map-wrap{height:340px;border-top:1px solid var(--rule)}
+        .map-wrap iframe{width:100%;height:100%;border:none;display:block;filter:grayscale(0.4)}
+
+        /* ══ FOOTER ══ */
+        footer{background:var(--ink);padding:4rem 2.5rem 2rem}
+        .footer-top{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;margin-bottom:2rem;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .footer-logo{display:flex;align-items:center;gap:8px;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.85rem}
+        .footer-logo-icon{width:30px;height:30px;background:var(--blue);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;color:#fff}
+        .footer-logo span{color:rgba(255,255,255,0.6)}
+        .footer-brand p{font-size:0.82rem;color:rgba(255,255,255,0.4);line-height:1.75;max-width:220px}
+        .footer-col h5{font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1.1rem}
+        .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+        .footer-col a{font-size:0.82rem;color:rgba(255,255,255,0.5);transition:color 0.15s}
+        .footer-col a:hover{color:#fff}
+        .footer-bottom{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.75rem;color:rgba(255,255,255,0.3)}
+        .cert-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.4);border-radius:4px;padding:3px 9px;font-size:0.68rem;font-weight:600;color:rgba(255,255,255,0.55)}
+
+        /* ══ WA FLOAT ══ */
+        .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;display:flex;align-items:center;gap:7px;background:var(--green);color:#fff;font-size:0.78rem;font-weight:600;padding:0.7rem 1.1rem;border-radius:100px;box-shadow:0 4px 20px rgba(22,163,74,0.3);transition:background 0.18s,transform 0.18s;animation:floatIn 0.5s ease 1s both}
+        .wa-float:hover{background:#15803d;transform:translateY(-1px)}
+        @keyframes floatIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+        /* ══ MOBILE NAV ══ */
+        .mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;z-index:890;background:var(--white);border-bottom:1px solid var(--rule);padding:1.25rem;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+        .mobile-nav.open{display:block}
+        .mobile-nav ul{list-style:none}
+        .mobile-nav li{border-bottom:1px solid var(--rule)}
+        .mobile-nav li a{display:block;padding:0.85rem 0;font-size:0.9rem;color:var(--ink2);font-weight:500}
+        .mobile-nav-actions{display:flex;gap:0.6rem;margin-top:1.1rem;flex-wrap:wrap}
+
+        /* ══ REVEAL ══ */
+        .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .r1{transition-delay:0.08s}.r2{transition-delay:0.16s}.r3{transition-delay:0.24s}.r4{transition-delay:0.32s}
+
+        /* ══ RESPONSIVE ══ */
+        @media(max-width:1100px){
+            nav{padding:0 1.5rem}
+            .nav-center{display:none}
+            .hamburger{display:flex}
+            .hero-inner{grid-template-columns:1fr;padding:4rem 1.5rem 3rem;gap:3rem}
+            .hero-right{height:360px}
+            .hero-left{padding-right:0}
+            .trusted-logos{flex-wrap:wrap}
+            .trusted-logo{flex:0 0 33%}
+            .stats-inner{grid-template-columns:repeat(2,1fr)}
+            .stat-item:nth-child(2){border-right:none}
+            .stat-item:nth-child(3){border-right:1px solid rgba(255,255,255,0.15)}
+            .section{padding:4rem 1.5rem}
+            .steps{grid-template-columns:1fr 1fr}
+            .docs-grid{grid-template-columns:1fr 1fr}
+            .why-layout{grid-template-columns:1fr;gap:3rem}
+            .reviews-layout{grid-template-columns:1fr;gap:3rem}
+            .contact-layout{grid-template-columns:1fr;gap:3rem}
+            .footer-top{grid-template-columns:1fr 1fr}
+        }
+        @media(max-width:768px){
+            .hero-right{grid-template-columns:1fr 1fr;height:280px}
+            .hero-img-tall{grid-row:auto}
+            .steps{grid-template-columns:1fr}
+            .docs-grid{grid-template-columns:1fr}
+            .form-row{grid-template-columns:1fr}
+            .footer-top{grid-template-columns:1fr}
+            .stats-inner{grid-template-columns:repeat(2,1fr)}
+            .wa-float span{display:none}
+            .wa-float{padding:0.8rem}
+            .trusted-logo{flex:0 0 50%}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <a href="#home" class="nav-logo">
+<!--        <div class="nav-logo-icon"></div>-->
+        <span class="nav-logo-text">LINGO<span> M</span></span>
+    </a>
+    <ul class="nav-center">
+        <li><a href="#languages">Languages</a></li>
+        <li><a href="#doc-types">Documents</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+        <a href="https://wa.me/38971309018" class="btn btn-ghost" target="_blank">WhatsApp</a>
+        <a href="#contact" class="btn btn-primary">Get a Quote →</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <ul>
+        <li><a href="#languages" onclick="closeMobile()">Languages</a></li>
+        <li><a href="#doc-types" onclick="closeMobile()">Documents</a></li>
+        <li><a href="#why" onclick="closeMobile()">Why Us</a></li>
+        <li><a href="#process" onclick="closeMobile()">Process</a></li>
+        <li><a href="#reviews" onclick="closeMobile()">Reviews</a></li>
+        <li><a href="#contact" onclick="closeMobile()">Contact</a></li>
+    </ul>
+    <div class="mobile-nav-actions">
+        <a href="#contact" class="btn btn-primary" onclick="closeMobile()">Get a Quote →</a>
+        <a href="https://wa.me/38971309018" class="btn btn-ghost" target="_blank">WhatsApp</a>
+    </div>
+</div>
+
+<!-- HERO — split layout -->
+<section class="hero" id="home">
+    <div class="hero-inner">
+        <!-- LEFT -->
+        <div class="hero-left">
+
+            <h1>Certified document<br>translation services<br><span class="accent">you can trust</span></h1>
+            <p class="hero-sub">All types of document translations in 25+ languages. Court-authorised, apostille-ready, delivered in less than 24 hours.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-hero-primary">Start your order →</a>
+                <a href="https://wa.me/38971309018" class="btn-hero-ghost" target="_blank">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp us
+                </a>
+            </div>
+            <div class="hero-rating">
+                <span class="hero-stars">★★★★★</span>
+                <strong>4.9</strong>
+                <span class="hero-rating-sep">·</span>
+                <span class="hero-rating-sep">·</span>
+                <span>22 years active</span>
+            </div>
+        </div>
+        <!-- RIGHT — image grid -->
+        <div class="hero-right">
+            <div class="hero-img hero-img-tall">
+                <img src="https://images.unsplash.com/photo-1600275669439-14e40452d20b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="European city skyline" loading="eager">
+            </div>
+            <div class="hero-img hero-img-sm">
+                <img src="https://media.istockphoto.com/id/1462788498/vector/welcome-in-major-world-language-word-cloud-vector-illustration.jpg?s=612x612&w=0&k=20&c=rL5EgzJffElbl6LofqPu_vfy3_VkxHKwuiZ_o7G-INk=" alt="Document signing" loading="eager">
+            </div>
+            <div class="hero-img hero-img-sm">
+                <img src="https://www.westonschools.org/country/wp-content/uploads/sites/8/2019/02/iStock-493553442.jpg" alt="European city skyline" loading="eager">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUSTED COMPANIES -->
+<div class="trusted" id="trusted">
+    <div class="trusted-inner">
+        <p class="trusted-label">Trusted by organisations across Europe</p>
+        <div class="trusted-logos">
+            <div class="trusted-logo">
+                <div class="trusted-logo-inner">
+                    <div class="trusted-logo-icon" style="background:#003399">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="white" stroke-width="1.5"/></svg>
+                    </div>
+                    <div>
+                        <div class="trusted-logo-name">U.S Embassy</div>
+                        <div class="trusted-logo-sub">Skopje , Prishtine </div>
+                    </div>
+                </div>
+            </div>
+            <div class="trusted-logo">
+                <div class="trusted-logo-inner">
+                    <div class="trusted-logo-icon" style="background:#DD0000">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="white" stroke-width="1.5"/><path d="M3 10h18" stroke="white" stroke-width="1.5"/></svg>
+                    </div>
+                    <div>
+                        <div class="trusted-logo-name">Volvo Macedonia</div>
+                        <div class="trusted-logo-sub">Skopje</div>
+                    </div>
+                </div>
+            </div>
+            <div class="trusted-logo">
+                <div class="trusted-logo-inner">
+                    <div class="trusted-logo-icon" style="background:#1a1a2e">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3L4 9v12h16V9L12 3z" stroke="white" stroke-width="1.5"/><rect x="9" y="13" width="6" height="8" stroke="white" stroke-width="1.5"/></svg>
+                    </div>
+                    <div>
+                        <div class="trusted-logo-name">International Balkan</div>
+                        <div class="trusted-logo-sub">University, Skopje</div>
+                    </div>
+                </div>
+            </div>
+            <div class="trusted-logo">
+                <div class="trusted-logo-inner">
+                    <div class="trusted-logo-icon" style="background:#006400">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round"/><rect x="3" y="3" width="18" height="18" rx="3" stroke="white" stroke-width="1.5"/></svg>
+                    </div>
+                    <div>
+                        <div class="trusted-logo-name">Ministry of Justice</div>
+                        <div class="trusted-logo-sub">North Macedonia</div>
+                    </div>
+                </div>
+            </div>
+            <div class="trusted-logo">
+                <div class="trusted-logo-inner">
+                    <div class="trusted-logo-icon" style="background:#1565C0">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="white" stroke-width="1.5"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="1.5"/></svg>
+                    </div>
+                    <div>
+                        <div class="trusted-logo-name">Public healthcare institutions</div>
+                        <div class="trusted-logo-sub">Skopje</div>
+                    </div>
+                </div>
+            </div>
+            <div class="trusted-logo">
+                <div class="trusted-logo-inner">
+                    <div class="trusted-logo-icon" style="background:#7B1FA2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="white" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <div>
+                        <div class="trusted-logo-name">Law Offices</div>
+                        <div class="trusted-logo-sub">Skopje · Zagreb · Belgrade</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee">
+    <div class="marquee-inner" id="marqueeInner"></div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+    <div class="stats-inner">
+        <div class="stat-item"><div class="stat-n">22</div><div class="stat-l">Years active</div></div>
+        <div class="stat-item"><div class="stat-n">25+</div><div class="stat-l">Languages</div></div>
+        <div class="stat-item"><div class="stat-n">5,000+</div><div class="stat-l">Clients served</div></div>
+        <div class="stat-item"><div class="stat-n">4.9 ★</div><div class="stat-l">Google rating</div></div>
+    </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process section" id="process">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-label">How it works</div>
+                <h2 class="section-h">Simple, transparent process</h2>
+            </div>
+        </div>
+        <div class="steps reveal">
+            <div class="step"><div class="step-n">01</div><h4>Submit document</h4><p>Upload, scan, or drop off your document. </p></div>
+            <div class="step"><div class="step-n">02</div><h4>Receive quote</h4><p>Clear pricing, no hidden fees.</p></div>
+            <div class="step"><div class="step-n">03</div><h4>Expert translation</h4><p>Assigned to a specialist. Triple-revision process for absolute accuracy.</p></div>
+            <div class="step"><div class="step-n">04</div><h4>Certified delivery</h4><p>Stamped, signed, and legally certified. Delivered digitally and/or in print.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="languages section" id="languages">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-label">We translate to</div>
+                <h2 class="section-h">25+ Languages</h2>
+            </div>
+            <div class="lang-nav">
+                <button class="lang-nav-btn" id="langPrev">←</button>
+                <button class="lang-nav-btn" id="langNext">→</button>
+            </div>
+        </div>
+    </div>
+    <div class="lang-carousel-wrap">
+        <div class="lang-fade-l"></div>
+        <div class="lang-fade-r"></div>
+        <div class="lang-track" id="langTrack">
+            <div class="lang-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_North_Macedonia.svg/1280px-Flag_of_North_Macedonia.svg.png" alt="Macedonia" loading="lazy"><div class="lang-card-body"><span class="lang-code">MK</span><div class="lang-name">Македонски</div><div class="lang-region">Macedonia</div></div></div>
+            <div class="lang-card"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/330px-Flag_of_Germany.svg.png" alt="Germany" loading="lazy"><div class="lang-card-body"><span class="lang-code">DE</span><div class="lang-name">Deutsch</div><div class="lang-region">Germany · Austria · Switzerland</div></div></div>
+            <div class="lang-card"><img src="https://i.ebayimg.com/00/s/MTAwNFgxNjAw/z/GC8AAOSwHWJbisRS/$_57.JPG?set_id=8800005007" alt="UK" loading="lazy"><div class="lang-card-body"><span class="lang-code">EN</span><div class="lang-name">English</div><div class="lang-region">United Kingdom · USA · Global</div></div></div>
+            <div class="lang-card"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1920px-Flag_of_France.svg.png?_=20220120162234" alt="France" loading="lazy"><div class="lang-card-body"><span class="lang-code">FR</span><div class="lang-name">Français</div><div class="lang-region">France · Belgium · Switzerland</div></div></div>
+            <div class="lang-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Greece.svg/960px-Flag_of_Greece.svg.png" alt="Greece" loading="lazy"><div class="lang-card-body"><span class="lang-code">GR</span><div class="lang-name">Ελληνικά</div><div class="lang-region">Greece</div></div></div>
+            <div class="lang-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB68A5ZTaMLxwUtNlC3vZYsHeyMa_INFOZQbAvhW-7SEzsktJAQMKxK3_a&s=10" alt="Italy" loading="lazy"><div class="lang-card-body"><span class="lang-code">IT</span><div class="lang-name">Italiano</div><div class="lang-region">Italy · Switzerland</div></div></div>
+            <div class="lang-card"><img src="ChatGPT Image Jun 10, 2026, 05_42_01 PM.png" height="1024" width="1536"/><div class="lang-card-body"><span class="lang-code">ES</span><div class="lang-name">Español</div><div class="lang-region">Spain · Latin America</div></div></div>
+            <div class="lang-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Flag_of_Albania.svg/1920px-Flag_of_Albania.svg.png?_=20230726024351" alt="Albania" loading="lazy"><div class="lang-card-body"><span class="lang-code">SQ</span><div class="lang-name">Shqip</div><div class="lang-region">Albania · Kosovo</div></div></div>
+            <div class="lang-card"><img src="ChatGPT Image Jun 10, 2026, 05_44_08 PM.png" height="1024" width="1536"/><div class="lang-card-body"><span class="lang-code">TR</span><div class="lang-name">Türkçe</div><div class="lang-region">Turkey</div></div></div>
+            <div class="lang-card"><img src="https://cdn.britannica.com/39/94839-050-6827FB80/Flag-Serbia.jpg" alt="Serbia" loading="lazy"><div class="lang-card-body"><span class="lang-code">SR</span><div class="lang-name">Srpski</div><div class="lang-region">Serbia · Bosnia</div></div></div>
+            <div class="lang-card"><img src="https://cdn.britannica.com/82/2982-050-4A783E03/flag-prototype-Netherlands-countries-European-flags.jpg" alt="Netherlands" loading="lazy"><div class="lang-card-body"><span class="lang-code">NL</span><div class="lang-name">Nederlands</div><div class="lang-region">Netherlands · Belgium</div></div></div>
+            <div class="lang-card"><img src="https://flagman.ie/wp-content/uploads/2015/11/Russia-Flag-1.png" alt="Russia" loading="lazy"><div class="lang-card-body"><span class="lang-code">RU</span><div class="lang-name">Русский</div><div class="lang-region">Russia · Belarus</div></div></div>
+            <div class="lang-card"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/12/Flag_of_Poland.svg/960px-Flag_of_Poland.svg.png" alt="Poland" loading="lazy"><div class="lang-card-body"><span class="lang-code">PL</span><div class="lang-name">Polski</div><div class="lang-region">Poland</div></div></div>
+            <div class="lang-card"><img src="https://cdn.britannica.com/79/5779-050-46C999AF/Flag-Saudi-Arabia.jpg" alt="Arabic" loading="lazy"><div class="lang-card-body"><span class="lang-code">AR</span><div class="lang-name">العربية</div><div class="lang-region">Arabia · Middle East</div></div></div>
+            <div class="lang-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdm3aC6gU1kRiNfo4oTUOd2hFhdPDhoU5ffRCLd5-DjHg81DRFzjCmOY7m&s=10" alt="Portugal" loading="lazy"><div class="lang-card-body"><span class="lang-code">PT</span><div class="lang-name">Português</div><div class="lang-region">Portugal · Brazil</div></div></div>
+            <div class="lang-card" style="background:var(--bg);border-style:dashed;display:flex;align-items:center;justify-content:center;min-height:190px"><div style="text-align:center;padding:1.5rem"><div style="font-size:1.8rem;font-weight:700;color:var(--blue);margin-bottom:4px"></div><div style="font-size:0.72rem;font-weight:500;color:var(--mid);text-transform:uppercase;letter-spacing:0.08em">+More languages</div><div style="font-size:0.75rem;color:var(--mid);margin-top:6px">Contact us for your pair</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- DOC TYPES -->
+<section class="docs section" id="doc-types">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-label">Document specialties</div>
+                <h2 class="section-h">Every type, precisely handled</h2>
+            </div>
+        </div>
+        <div class="docs-grid">
+            <div class="doc-card reveal"><div class="doc-img"><img src="https://signaturely.com/wp-content/uploads/2022/08/non-disclosure-agreement-uplead.jpg" alt="Legal Documents" loading="lazy"></div><div class="doc-body"><span class="doc-tag">Court accepted</span><h3>Legal Documents</h3><p>Certified translations for court proceedings, legal procedures and official records.</p><div class="doc-tags"><span class="doc-pill">Contracts</span><span class="doc-pill">Court orders</span><span class="doc-pill">Authorisations</span><span class="doc-pill">Official records</span></div></div></div>
+            <div class="doc-card reveal r1"><div class="doc-img"><img src="https://img.freepik.com/premium-photo/stamp-approved-document-us-visa-embassy_151013-35977.jpg" alt="Personal Documents" loading="lazy"></div><div class="doc-body"><span class="doc-tag">Embassy & Immigration</span><h3>Personal Documents</h3><p>Translations for embassies, visa applications and international administrative procedures.</p><div class="doc-tags"><span class="doc-pill">Passport</span><span class="doc-pill">Birth certificate</span><span class="doc-pill">Marriage certificate</span><span class="doc-pill">Residence docs</span></div></div></div>
+            <div class="doc-card reveal r2"><div class="doc-img"><img src="https://lh7-us.googleusercontent.com/NYXy-XrogJXtQNYxTrjwOvD5U6SN3K2nmAW6YUHlGzkeGTPy1xw0sYLkerDPw9jlgqVACczZndJnD06IAsLZZh2pf6gCU40M9OLuojkdgYeCeBKTDo-pu7zl8WktD83T064Jo96FlVuJLuPLEyuAzME" alt="Academic Documents" loading="lazy"></div><div class="doc-body"><span class="doc-tag">Nostrification ready</span><h3>Academic Documents</h3><p>Certified academic translations for universities and international applications.</p><div class="doc-tags"><span class="doc-pill">Diploma</span><span class="doc-pill">Transcript</span><span class="doc-pill">Certificate</span><span class="doc-pill">Academic report</span></div></div></div>
+            <div class="doc-card reveal"><div class="doc-img"><img src="https://cdn.prod.website-files.com/6966c715bac2a445645cc57e/6966c715bac2a445645ccbeb_681d379ca82b95f0af0c54be_medical_history_form_template.webp" alt="Medical Records" loading="lazy"></div><div class="doc-body"><span class="doc-tag">Verified terminology</span><h3>Medical Records</h3><p>Accurate medical translations using verified professional and clinical terminology.</p><div class="doc-tags"><span class="doc-pill">Medical reports</span><span class="doc-pill">Prescriptions</span><span class="doc-pill">Discharge letter</span><span class="doc-pill">Lab reports</span></div></div></div>
+            <div class="doc-card reveal r1"><div class="doc-img"><img src="https://i0.wp.com/www.expatincroatia.com/wp-content/uploads/2020/11/texas-apostille-2.jpg?resize=800%2C1073&ssl=1" alt="Government Documents" loading="lazy"></div><div class="doc-body"><span class="doc-tag">Government</span><h3>Administrative Documents</h3><p>Official translations for governmental institutions and international organisations.</p><div class="doc-tags"><span class="doc-pill">Registration</span><span class="doc-pill">Civil records</span><span class="doc-pill">Residence permits</span><span class="doc-pill">Work docs</span></div></div></div>
+            <div class="doc-card reveal r2"><div class="doc-img"><img src="https://cdn.prod.website-files.com/66b1de5cb0d672ddaa14ef22/672f2c146f7d315144f02b29_Balance%2520sheet.webp" alt="Business Documents" loading="lazy"></div><div class="doc-body"><span class="doc-tag">Corporate</span><h3>Business & Financial</h3><p>Professional translations for companies, finance and international business communication.</p><div class="doc-tags"><span class="doc-pill">Annual reports</span><span class="doc-pill">Balance sheets</span><span class="doc-pill">Contracts</span><span class="doc-pill">Invoices</span></div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY -->
+<section class="why section" id="why">
+    <div class="section-inner">
+        <div class="section-header reveal" style="margin-bottom:3.5rem">
+            <div>
+                <div class="section-label">Why LINGO M</div>
+                <h2 class="section-h">Precision institutions trust</h2>
+            </div>
+        </div>
+        <div class="why-layout">
+            <div class="reveal"><div class="why-img" style="aspect-ratio:4/3"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=80&auto=format&fit=crop" alt="Translation work" loading="lazy"></div></div>
+            <div class="why-features reveal r1">
+                <div class="why-feature"><div class="why-icon">✔</div><div class="why-text"><h4>Court-authorised translators</h4><p>All translators carry official court certification and are registered with the Ministry of Justice of North Macedonia.</p></div></div>
+                <div class="why-feature"><div class="why-icon">✔</div><div class="why-text"><h4>24h delivery</h4><p>Standard delivery in less than 24 hours. Express in less. Same-day available for truly urgent cases.</p></div></div>
+                <div class="why-feature"><div class="why-icon">✔</div><div class="why-text"><h4>Triple quality check</h4><p>Every translation goes through translation, revision, and proofreading by independent linguists before delivery.</p></div></div>
+                <div class="why-feature"><div class="why-icon">✔</div><div class="why-text"><h4>Apostille & notarisation</h4><p>Complete service for apostilles, notarial certifications, and legalisation for use in any country.</p></div></div>
+                <div class="why-feature"><div class="why-icon">✔</div><div class="why-text"><h4>Strict confidentiality</h4><p>Your personal and business information is handled with utmost discretion under full data protection compliance.</p></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews section" id="reviews">
+    <div class="section-inner">
+        <div class="reviews-layout">
+            <div class="reveal">
+                <div class="section-label">Client reviews</div>
+                <h2 class="section-h">What our clients say</h2>
+                <div class="reviews-trust">
+                    <div class="rt-item"><div class="rt-n">4.9★</div><div class="rt-l">Google avg</div></div>
+                    <div class="rt-item"><div class="rt-n">200+</div><div class="rt-l">Reviews</div></div>
+                    <div class="rt-item"><div class="rt-n">100%</div><div class="rt-l">Recommend</div></div>
+                </div>
+            </div>
+            <div class="reveal r2">
+                <div class="reviews-slider">
+                    <div class="reviews-track" id="reviewsTrack">
+                        <div class="review-slide"><div class="review-stars">★★★★★</div><p class="review-text">Fantastična usluga! Prevod na moje diplome za nostrifikaciju u Austriji bio je gotov za manje od 24 sati. Sve prihvaćeno bez ikakvih problema u Beču.</p><div class="review-author"><div class="review-av">A</div><div><div class="review-name">Ana Petrović</div><div class="review-role">Student — Vienna, Austria</div><div class="review-src">Google · 5/5</div></div></div></div>
+                        <div class="review-slide"><div class="review-stars">★★★★★</div><p class="review-text">Им се обративме за превод на деловни договори на германски. Брзина, точност и професионалност на највисоко ниво. Нашите партнери во Германија го прифатија без забелешки.</p><div class="review-author"><div class="review-av">М</div><div><div class="review-name">Марко Стојановски</div><div class="review-role">Director — Skopje</div><div class="review-src">Google · 5/5</div></div></div></div>
+                        <div class="review-slide"><div class="review-stars">★★★★★</div><p class="review-text">Trebala mi je hitna prijevoda za Magistrat Wien — rokovi bili strogi. Ekipa LINGO M je sve riješila za 24 sata, dokument prihvaćen odmah bez dodatnih pitanja.</p><div class="review-author"><div class="review-av">J</div><div><div class="review-name">Jovana Milić</div><div class="review-role">Private — Vienna</div><div class="review-src">Facebook · 5/5</div></div></div></div>
+                        <div class="review-slide"><div class="review-stars">★★★★★</div><p class="review-text">Excellent service for certified translations of our legal contracts. Documents accepted by the court without any issues. Very professional — LINGO M stands out for precision and reliability.</p><div class="review-author"><div class="review-av">D</div><div><div class="review-name">David Hartmann</div><div class="review-role">Lawyer — Germany</div><div class="review-src">Google · 5/5</div></div></div></div>
+                        <div class="review-slide"><div class="review-stars">★★★★★</div><p class="review-text">Ми беа потребни медицински наоди преведени на англиски. Терминологијата беше апсолутно точна — лекарот беше пријатно изненаден. Прв пат некој да ги преведе моите наоди вистински правилно.</p><div class="review-author"><div class="review-av">Е</div><div><div class="review-name">Елена Јованова</div><div class="review-role">Patient — Štip</div><div class="review-src">Google · 5/5</div></div></div></div>
+                    </div>
+                </div>
+                <div class="reviews-controls">
+                    <button class="rev-btn" id="revPrev">←</button>
+                    <div class="rev-dots" id="revDots"></div>
+                    <button class="rev-btn" id="revNext">→</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="contact">
+    <div class="section-inner">
+        <div class="contact-layout">
+            <div class="reveal">
+                <div class="section-label">Get in touch</div>
+                <h2 class="section-h">Send your document</h2>
+                <div class="contact-detail-list">
+                    <div class="cdetail"><div class="cdetail-icon">✔</div><div><div class="cdetail-label">Phone</div><div class="cdetail-val"><a href="tel:+38971309018">+389 71 309 018</a></div></div></div>
+                    <div class="cdetail"><div class="cdetail-icon">✔</div><div><div class="cdetail-label">Email</div><div class="cdetail-val"><a href="mailto:info.lingo@yahoo.com">info.lingo@yahoo.com</a></div></div></div>
+                    <div class="cdetail"><div class="cdetail-icon">✔</div><div><div class="cdetail-label">WhatsApp</div><div class="cdetail-val"><a href="https://wa.me/38971309018" target="_blank">+389 71 309 018</a></div></div></div>
+                    <div class="cdetail"><div class="cdetail-icon">✔</div><div><div class="cdetail-label">Location</div><div class="cdetail-val">Skopje, North Macedonia</div></div></div>
+                    <div class="cdetail"><div class="cdetail-icon">✔</div><div><div class="cdetail-label">Hours</div><div class="cdetail-val">Mon–Fri: 08:00–16:00</div></div></div>
+                </div>
+                <div class="wa-strip">
+                    <div class="wa-strip-text"><h4>Instant response</h4><p>Message us directly on WhatsApp</p></div>
+                    <a href="https://wa.me/38971309018" class="wa-strip-btn" target="_blank"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp →</a>
+                </div>
+            </div>
+            <div class="contact-form reveal r2">
+                <h3>Request a quote</h3>
+                <!-- ═══════════════════════════════════════════════════════════
+                     FormSubmit.co — delivers to info.lingo@yahoo.com
+                     • enctype="multipart/form-data" enables file attachments
+                     • _subject    sets the email subject line
+                     • _captcha    disabled (no Google reCAPTCHA friction)
+                     • _honey      hidden spam-trap field
+                     • _next       redirect to thank-you page after submit
+                     • _autoresponse sends confirmation to the client
+                     FIRST SUBMIT: FormSubmit will send a one-time activation
+                     email to info.lingo@yahoo.com — click the link to activate.
+                ════════════════════════════════════════════════════════════ -->
+                <form action="https://formsubmit.co/5051684a52a0f3a2f12d473f142b98be" method="POST" enctype="multipart/form-data">                    <!-- FormSubmit config fields -->
+                    <input type="hidden" name="_subject" value="New Quote Request — LINGO M">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="5051684a52a0f3a2f12d473f142b98be">
+                    <input type="text"   name="_honey"   style="display:none">
+
+                    <div class="form-row">
+                        <div class="fg"><label>Full name *</label><input type="text" name="name" placeholder="Your name" required></div>
+                        <div class="fg"><label>Phone *</label><input type="tel" name="phone" placeholder="+389 7X XXX XXX" required></div>
+                    </div>
+                    <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="your@email.com" required></div>
+                    <div class="form-row">
+                        <div class="fg"><label>Language pair *</label><select name="language_pair" required><option value="">— Select —</option><option>Macedonian → English</option><option>Macedonian → German</option><option>Macedonian → French</option><option>Macedonian → Italian</option><option>Macedonian → Spanish</option><option>Macedonian → Serbian</option><option>Macedonian → Albanian</option><option>Macedonian → Turkish</option><option>English → Macedonian</option><option>Other combination</option></select></div>
+                        <div class="fg"><label>Document type *</label><select name="document_type" required><option value="">— Select —</option><option>Diploma / Certificate</option><option>Birth / Marriage Certificate</option><option>Passport / ID Card</option><option>Contract</option><option>Power of Attorney</option><option>Medical Record</option><option>Court Document</option><option>Business Document</option><option>Visa Application</option><option>Other</option></select></div>
+                    </div>
+                    <div class="fg"><label>Message</label><textarea name="message" placeholder="Additional details, deadline, urgency…"></textarea></div>
+                    <div class="fg"><label>Attach document (optional)</label><label class="file-area" for="fileInput"><input type="file" id="fileInput" name="document" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"><span id="fileLabel">📎 PDF, image, or Word document</span></label></div>
+                    <button type="submit" class="form-submit">Send request →</button>
+                    <p class="form-note">We respond in less than 1 hour during business hours.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAP -->
+<div class="map-wrap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46542.20!2d21.4254!3d41.9973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135415b41ac31c1b%3A0xa0e6022e2b76de72!2sSkopje!5e0!3m2!1sen!2smk!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+    <div class="section-label reveal" style="display:inline-flex;color:var(--blue);background:rgba(255,255,255,0.15);margin-bottom:1.25rem">Ready to start?</div>
+    <h2 class="reveal">Ready for translation?</h2>
+    <p class="reveal">Send your document and receive a certified quote within 1 hour. No obligation.</p>
+    <div class="cta-actions reveal">
+        <a href="#contact" class="btn btn-white btn-lg">Send document →</a>
+        <a href="https://wa.me/38971309018" class="btn-outline-white btn-lg" target="_blank">WhatsApp us</a>
+        <a href="tel:+38971309018" class="btn-outline-white btn-lg">Call us</a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="footer-logo"><div class="footer-logo-icon">LM</div>LINGO<span> M</span></div>
+            <p>Court certified translations in Skopje, North Macedonia. 22 years of experience serving clients across Europe.</p>
+        </div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a href="#doc-types">Legal translation</a></li><li><a href="#doc-types">Medical</a></li><li><a href="#doc-types">Academic</a></li><li><a href="#doc-types">Immigration</a></li><li><a href="#doc-types">Apostille</a></li></ul></div>
+        <div class="footer-col"><h5>Languages</h5><ul><li><a href="#languages">English</a></li><li><a href="#languages">German</a></li><li><a href="#languages">French</a></li><li><a href="#languages">Italian</a></li><li><a href="#languages">Albanian</a></li><li><a href="#languages">All 25+ languages →</a></li></ul></div>
+        <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:info.lingo@yahoo.com">info.lingo@yahoo.com</a></li><li><a href="tel:+38971309018">+389 71 309 018</a></li><li><a href="https://wa.me/38971309018" target="_blank">WhatsApp</a></li><li><a href="#">Skopje, Macedonia</a></li><li><a href="#">Mon–Fri 08:00–16:30</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2025 LINGO M. All rights reserved.</span>
+        <div><span class="cert-badge">✓ Court authorised · Ministry of Justice, North Macedonia</span></div>
+    </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/38971309018" class="wa-float" target="_blank" aria-label="WhatsApp">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span>WhatsApp</span>
+</a>
+
+<script>
+    // MARQUEE
+    // (function(){
+    //     const items=['Legal Translation','Certified Documents','Macedonian','German','English','French','Italian','Spanish','Albanian','Turkish','Serbian','Dutch','Russian','Polish','Arabic','Portuguese','Apostille & Notarisation','Court Authorised','48h Delivery'];
+    //     const inner=document.getElementById('marqueeInner');
+    //     const html=items.map(t=>`<span class="marquee-item">${t}<span class="marquee-dot"></span></span>`).join('');
+    //     inner.innerHTML=html+html;
+    // })();
+    // LANGUAGE SWITCHER — EN / MK / SQ
+    const TRANSLATIONS = {
+        en: {
+            // NAV
+            nav_languages: "Languages",
+            nav_documents: "Documents",
+            nav_why: "Why Us",
+            nav_process: "Process",
+            nav_reviews: "Reviews",
+            nav_contact: "Contact",
+            nav_whatsapp: "WhatsApp",
+            nav_quote: "Get a Quote →",
+            // HERO
+            hero_h1_1: "Certified document",
+            hero_h1_2: "translation services",
+            hero_h1_accent: "you can trust",
+            hero_sub: "All types of document translations in 25+ languages. Court-authorised, apostille-ready, delivered in less than 24 hours.",
+            hero_cta1: "Start your order →",
+            hero_cta2: "WhatsApp us",
+            hero_years: "22 years active",
+            // TRUSTED
+            trusted_label: "Trusted by organisations across Europe",
+            // STATS
+            stat_years_n: "22", stat_years_l: "Years active",
+            stat_lang_n: "25+", stat_lang_l: "Languages",
+            stat_clients_n: "5,000+", stat_clients_l: "Clients served",
+            stat_rating_n: "4.9 ★", stat_rating_l: "Google rating",
+            // PROCESS
+            process_label: "How it works",
+            process_h: "Simple, transparent process",
+            step1_h: "Submit document", step1_p: "Upload, scan, or drop off your document.",
+            step2_h: "Receive quote", step2_p: "Clear pricing, no hidden fees.",
+            step3_h: "Expert translation", step3_p: "Assigned to a specialist. Triple-revision process for absolute accuracy.",
+            step4_h: "Certified delivery", step4_p: "Stamped, signed, and legally certified. Delivered digitally and/or in print.",
+            // LANGUAGES
+            lang_label: "We translate to",
+            lang_h: "25+ Languages",
+            // DOCS
+            docs_label: "Document specialties",
+            docs_h: "Every type, precisely handled",
+            doc1_tag: "Court accepted", doc1_h: "Legal Documents", doc1_p: "Certified translations for court proceedings, legal procedures and official records.",
+            doc2_tag: "Embassy & Immigration", doc2_h: "Personal Documents", doc2_p: "Translations for embassies, visa applications and international administrative procedures.",
+            doc3_tag: "Nostrification ready", doc3_h: "Academic Documents", doc3_p: "Certified academic translations for universities and international applications.",
+            doc4_tag: "Verified terminology", doc4_h: "Medical Records", doc4_p: "Accurate medical translations using verified professional and clinical terminology.",
+            doc5_tag: "Government", doc5_h: "Administrative Documents", doc5_p: "Official translations for governmental institutions and international organisations.",
+            doc6_tag: "Corporate", doc6_h: "Business & Financial", doc6_p: "Professional translations for companies, finance and international business communication.",
+            // WHY
+            why_label: "Why LINGO M",
+            why_h: "Precision institutions trust",
+            why1_h: "Court-authorised translators", why1_p: "All translators carry official court certification and are registered with the Ministry of Justice of North Macedonia.",
+            why2_h: "24h delivery ", why2_p: "Standard delivery in less than 24 hours. Express in less. Same-day available for truly urgent cases.",
+            why3_h: "Triple quality check", why3_p: "Every translation goes through translation, revision, and proofreading by independent linguists before delivery.",
+            why4_h: "Apostille & notarisation", why4_p: "Complete service for apostilles, notarial certifications, and legalisation for use in any country.",
+            why5_h: "Strict confidentiality", why5_p: "Your personal and business information is handled with utmost discretion under full data protection compliance.",
+            // REVIEWS
+            reviews_label: "Client reviews",
+            reviews_h: "What our clients say",
+            rt1_n: "4.9★", rt1_l: "Google avg",
+            rt2_n: "200+", rt2_l: "Reviews",
+            rt3_n: "100%", rt3_l: "Recommend",
+            // CONTACT
+            contact_label: "Get in touch",
+            contact_h: "Send your document",
+            cd_phone_l: "Phone", cd_email_l: "Email", cd_wa_l: "WhatsApp", cd_loc_l: "Location", cd_loc_v: "Skopje, North Macedonia", cd_hrs_l: "Hours", cd_hrs_v: "Mon–Fri: 08:00–16:00",
+            wa_h: "Instant response", wa_p: "Message us directly on WhatsApp", wa_btn: "WhatsApp →",
+            form_h: "Request a quote",
+            form_name: "Full name *", form_phone: "Phone *", form_email: "Email *",
+            form_langpair: "Language pair *", form_doctype: "Document type *",
+            form_msg: "Message", form_file: "Attach document (optional)",
+            form_submit: "Send request →",
+            form_note: "We respond in less than 1 hour during business hours.",
+            // CTA
+            cta_ready: "Ready to start?",
+            cta_h: "Ready for translation?",
+            cta_p: "Send your document and receive a certified quote within 1 hour. No obligation.",
+            cta_btn1: "Send document →", cta_btn2: "WhatsApp us", cta_btn3: "Call us",
+            // FOOTER
+            footer_desc: "Court certified translations in Skopje, North Macedonia. 22 years of experience serving clients across Europe.",
+            footer_services: "Services", footer_languages: "Languages", footer_contact: "Contact",
+            fs_legal: "Legal translation", fs_medical: "Medical", fs_academic: "Academic", fs_immigration: "Immigration", fs_apostille: "Apostille",
+            fl_all: "All 25+ languages →",
+            footer_copy: "© 2025 LINGO M. All rights reserved.",
+            footer_cert: "✓ Court authorised · Ministry of Justice, North Macedonia",
+            // SELECT OPTIONS
+            sel_lang_placeholder: "— Select —",
+            sel_doc_placeholder: "— Select —",
+            // File area
+            file_area_text: "📎 PDF, image, or Word document",
+            // mobile
+            mob_quote: "Get a Quote →",
+        },
+
+        mk: {
+            nav_languages: "Јазици",
+            nav_documents: "Документи",
+            nav_why: "Зошто Ние",
+            nav_process: "Процес",
+            nav_reviews: "Рецензии",
+            nav_contact: "Контакт",
+            nav_whatsapp: "WhatsApp",
+            nav_quote: "Побарај понуда →",
+            hero_h1_1: "Овластени преводи",
+            hero_h1_2: "на документи",
+            hero_h1_accent: "кои можете да им верувате",
+            hero_sub: "Сите видови преводи на документи на 25+ јазици. Судски овластени, готови за апостил, испорачани за помалку од 24 часа.",
+            hero_cta1: "Нарачај →",
+            hero_cta2: "Пиши ни на WhatsApp",
+            hero_years: "22 години активни",
+            trusted_label: "Довербата на организации низ Европа",
+            stat_years_n: "22", stat_years_l: "Години активност",
+            stat_lang_n: "25+", stat_lang_l: "Јазици",
+            stat_clients_n: "5.000+", stat_clients_l: "Задоволни клиенти",
+            stat_rating_n: "4,9 ★", stat_rating_l: "Оцена на Google",
+            process_label: "Како функционира",
+            process_h: "Едноставен, транспарентен процес",
+            step1_h: "Испрати документ", step1_p: "Прикачи, скенирај или донеси го документот.",
+            step2_h: "Добиј понуда", step2_p: "Јасни цени, без скриени трошоци.",
+            step3_h: "Стручен превод", step3_p: "Доделен на специјалист. Тројна ревизија за апсолутна точност.",
+            step4_h: "Заверена испорака", step4_p: "Заверено, потпишано и правно сертифицирано. Испорачано дигитално и/или во печатена форма.",
+            lang_label: "Преведуваме на",
+            lang_h: "25+ Јазици",
+            docs_label: "Специјалности на документи",
+            docs_h: "Секој тип, прецизно обработен",
+            doc1_tag: "Прифатено во суд", doc1_h: "Правни документи", doc1_p: "Заверени преводи за судски постапки, правни процедури и официјални записи.",
+            doc2_tag: "Амбасада и имиграција", doc2_h: "Лични документи", doc2_p: "Преводи за амбасади, апликации за виза и меѓународни административни постапки.",
+            doc3_tag: "Подготвено за нострификација", doc3_h: "Академски документи", doc3_p: "Заверени академски преводи за универзитети и меѓународни апликации.",
+            doc4_tag: "Верификувана терминологија", doc4_h: "Медицински документи", doc4_p: "Точни медицински преводи со верификувана стручна и клиничка терминологија.",
+            doc5_tag: "Владини", doc5_h: "Административни документи", doc5_p: "Официјални преводи за државни институции и меѓународни организации.",
+            doc6_tag: "Корпоративни", doc6_h: "Деловни и финансиски", doc6_p: "Стручни преводи за компании, финансии и меѓународна деловна комуникација.",
+            why_label: "Зошто LINGO M",
+            why_h: "Прецизност на која институциите имаат доверба",
+            why1_h: "Судски овластени преведувачи", why1_p: "Сите преведувачи имаат официјална судска заверка и се регистрирани во Министерството за правда на Северна Македонија.",
+            why2_h: "Испорака за 24ч", why2_p: "Стандардна испорака за помалку од 24 часа. Експрес за помалку. Достапно истиот ден за навистина итни случаи.",
+            why3_h: "Тројна проверка на квалитет", why3_p: "Секој превод поминува низ превод, ревизија и лектура од независни лингвисти пред испорака.",
+            why4_h: "Апостил и нотаризација", why4_p: "Комплетна услуга за апостили, нотарски заверки и легализација за употреба во секоја земја.",
+            why5_h: "Строга доверливост", why5_p: "Вашите лични и деловни информации се обработуваат со највисока дискреција согласно заштитата на податоци.",
+            reviews_label: "Рецензии на клиенти",
+            reviews_h: "Што велат нашите клиенти",
+            rt1_n: "4,9★", rt1_l: "Просек Google",
+            rt2_n: "200+", rt2_l: "Рецензии",
+            rt3_n: "100%", rt3_l: "Препорачуваат",
+            contact_label: "Контактирајте не",
+            contact_h: "Испратете го документот",
+            cd_phone_l: "Телефон", cd_email_l: "Е-пошта", cd_wa_l: "WhatsApp", cd_loc_l: "Локација", cd_loc_v: "Скопје, Северна Македонија", cd_hrs_l: "Работно време", cd_hrs_v: "Пон–Пет: 08:00–16:00",
+            wa_h: "Моментален одговор", wa_p: "Пишете ни директно на WhatsApp", wa_btn: "WhatsApp →",
+            form_h: "Побарај понуда",
+            form_name: "Целосно ime *", form_phone: "Телефон *", form_email: "Е-пошта *",
+            form_langpair: "Јазичен пар *", form_doctype: "Вид на документ *",
+            form_msg: "Порака", form_file: "Прикачи документ (опционално)",
+            form_submit: "Испрати барање →",
+            form_note: "Одговараме за помалку од 1 час во работно време.",
+            cta_ready: "Подготвени?",
+            cta_h: "Подготвени за превод?",
+            cta_p: "Испратете го документот и добијте заверена понуда за 1 час. Без обврска.",
+            cta_btn1: "Испрати документ →", cta_btn2: "WhatsApp", cta_btn3: "Јавете се",
+            footer_desc: "Судски заверени преводи во Скопје, Северна Македонија. 22 години искуство со клиенти низ Европа.",
+            footer_services: "Услуги", footer_languages: "Јазици", footer_contact: "Контакт",
+            fs_legal: "Правни преводи", fs_medical: "Медицински", fs_academic: "Академски", fs_immigration: "Имиграција", fs_apostille: "Апостил",
+            fl_all: "Сите 25+ јазици →",
+            footer_copy: "© 2025 LINGO M. Сите права задржани.",
+            footer_cert: "✓ Судски овластен · Министерство за правда, Северна Македонија",
+            sel_lang_placeholder: "— Избери —",
+            sel_doc_placeholder: "— Избери —",
+            file_area_text: "📎 PDF, слика или Word документ",
+            mob_quote: "Побарај понуда →",
+        },
+
+        sq: {
+            nav_languages: "Gjuhët",
+            nav_documents: "Dokumentet",
+            nav_why: "Pse Ne",
+            nav_process: "Procesi",
+            nav_reviews: "Vlerësimet",
+            nav_contact: "Kontakti",
+            nav_whatsapp: "WhatsApp",
+            nav_quote: "Kërko ofertë →",
+            hero_h1_1: "Shërbime të certifikuara",
+            hero_h1_2: "të përkthimit",
+            hero_h1_accent: "në të cilat mund të keni besim",
+            hero_sub: "Të gjitha llojet e përkthimeve të dokumenteve në 25+ gjuhë. Të autorizuara nga gjykata, gati për apostilë, të dorëzuara brenda 24 orësh.",
+            hero_cta1: "Fillo porosinë →",
+            hero_cta2: "Na shkruaj në WhatsApp",
+            hero_years: "22 vjet aktiv",
+            trusted_label: "Besuar nga organizata në të gjithë Evropën",
+            stat_years_n: "22", stat_years_l: "Vite aktive",
+            stat_lang_n: "25+", stat_lang_l: "Gjuhë",
+            stat_clients_n: "5.000+", stat_clients_l: "Klientë të shërbyer",
+            stat_rating_n: "4.9 ★", stat_rating_l: "Vlerësim Google",
+            process_label: "Si funksionon",
+            process_h: "Proces i thjeshtë dhe transparent",
+            step1_h: "Dërgo dokumentin", step1_p: "Ngarko, skano ose dorzëo dokumentin tënd.",
+            step2_h: "Merr ofertën", step2_p: "Çmime të qarta, pa tarifa të fshehura.",
+            step3_h: "Përkthim nga ekspertë", step3_p: "Caktuar tek një specialist. Proces i trefishtë rishikimi për saktësi absolute.",
+            step4_h: "Dorëzim i certifikuar", step4_p: "Vulosur, nënshkruar dhe certifikuar ligjërisht. Dorëzuar dixhitalisht dhe/ose në print.",
+            lang_label: "Përkthejmë në",
+            lang_h: "25+ Gjuhë",
+            docs_label: "Specialitete dokumentesh",
+            docs_h: "Çdo lloj, trajtuar me saktësi",
+            doc1_tag: "Pranuar nga gjykata", doc1_h: "Dokumente Ligjore", doc1_p: "Përkthime të certifikuara për procedura gjyqësore, procedura ligjore dhe regjistrime zyrtare.",
+            doc2_tag: "Ambasadë & Emigrim", doc2_h: "Dokumente Personale", doc2_p: "Përkthime për ambasada, aplikime për vizë dhe procedura administrative ndërkombëtare.",
+            doc3_tag: "Gati për nostriftkim", doc3_h: "Dokumente Akademike", doc3_p: "Përkthime akademike të certifikuara për universitete dhe aplikime ndërkombëtare.",
+            doc4_tag: "Terminologji e verifikuar", doc4_h: "Dokumente Mjekësore", doc4_p: "Përkthime mjekësore të sakta duke përdorur terminologji profesionale dhe klinike të verifikuar.",
+            doc5_tag: "Qeveritare", doc5_h: "Dokumente Administrative", doc5_p: "Përkthime zyrtare për institucione qeveritare dhe organizata ndërkombëtare.",
+            doc6_tag: "Korporative", doc6_h: "Biznesi & Financiare", doc6_p: "Përkthime profesionale për kompani, financa dhe komunikim ndërkombëtar biznesi.",
+            why_label: "Pse LINGO M",
+            why_h: "Saktësi e besuar nga institucionet",
+            why1_h: "Përkthyes të autorizuar nga gjykata", why1_p: "Të gjithë përkthyesit kanë certifikim zyrtar gjyqësor dhe janë regjistruar në Ministrinë e Drejtësisë të Maqedonisë së Veriut.",
+            why2_h: "Dorëzim 24h ", why2_p: "Dorëzim standard në 24 orë. Disponueshëm i njëjti ditë për raste me urgjencë.",
+            why3_h: "Kontroll i trefishtë i cilësisë", why3_p: "Çdo përkthim kalon nëpër përkthim, rishikim dhe korrigjim nga gjuhëtarë të pavarur para dorëzimit.",
+            why4_h: "Apostilë & noterizim", why4_p: "Shërbim i plotë për apostila, certifikime notariale dhe legalizim për përdorim në çdo vend.",
+            why5_h: "Konfidencialitet strict", why5_p: "Informacionet tuaja personale dhe të biznesit trajtohen me diskrecion të plotë sipas pajtueshmërisë me mbrojtjen e të dhënave.",
+            reviews_label: "Vlerësimet e klientëve",
+            reviews_h: "Çfarë thonë klientët tanë",
+            rt1_n: "4.9★", rt1_l: "Mesatare Google",
+            rt2_n: "200+", rt2_l: "Vlerësime",
+            rt3_n: "100%", rt3_l: "Rekomandojnë",
+            contact_label: "Na kontaktoni",
+            contact_h: "Dërgoni dokumentin tuaj",
+            cd_phone_l: "Telefon", cd_email_l: "Email", cd_wa_l: "WhatsApp", cd_loc_l: "Vendndodhja", cd_loc_v: "Shkup, Maqedonia e Veriut", cd_hrs_l: "Orari", cd_hrs_v: "Hën–Pre: 08:00–16:00",
+            wa_h: "Përgjigje e menjëhershme", wa_p: "Na shkruani drejtpërdrejt në WhatsApp", wa_btn: "WhatsApp →",
+            form_h: "Kërko një ofertë",
+            form_name: "Emri i plotë *", form_phone: "Telefon *", form_email: "Email *",
+            form_langpair: "Çifti i gjuhëve *", form_doctype: "Lloji i dokumentit *",
+            form_msg: "Mesazhi", form_file: "Bashkëngjit dokumentin (opsional)",
+            form_submit: "Dërgo kërkesën →",
+            form_note: "Përgjigjemi brenda 1 ore gjatë orarit të punës.",
+            cta_ready: "Gati të filloni?",
+            cta_h: "Gati për përkthim?",
+            cta_p: "Dërgoni dokumentin tuaj dhe merrni një ofertë të certifikuar brenda 1 ore. Pa detyrime.",
+            cta_btn1: "Dërgo dokumentin →", cta_btn2: "Na shkruaj", cta_btn3: "Na telefono",
+            footer_desc: "Përkthime të certifikuara nga gjykata në Shkup, Maqedonia e Veriut. 22 vjet përvojë duke shërbyer klientë në të gjithë Evropën.",
+            footer_services: "Shërbimet", footer_languages: "Gjuhët", footer_contact: "Kontakti",
+            fs_legal: "Përkthim ligjor", fs_medical: "Mjekësor", fs_academic: "Akademik", fs_immigration: "Emigrim", fs_apostille: "Apostilë",
+            fl_all: "Të gjitha 25+ gjuhët →",
+            footer_copy: "© 2025 LINGO M. Të gjitha të drejtat e rezervuara.",
+            footer_cert: "✓ Autorizuar nga gjykata · Ministria e Drejtësisë, Maqedonia e Veriut",
+            sel_lang_placeholder: "— Zgjidh —",
+            sel_doc_placeholder: "— Zgjidh —",
+            file_area_text: "📎 PDF, imazh ose dokument Word",
+            mob_quote: "Kërko ofertë →",
+        }
+    };
+
+    function applyLang(lang) {
+        const t = TRANSLATIONS[lang];
+        if (!t) return;
+
+        // Helper
+        function setText(sel, key) {
+            const el = document.querySelector(sel);
+            if (el && t[key] !== undefined) el.textContent = t[key];
+        }
+        function setHTML(sel, key) {
+            const el = document.querySelector(sel);
+            if (el && t[key] !== undefined) el.innerHTML = t[key];
+        }
+        function setAttr(sel, attr, key) {
+            const el = document.querySelector(sel);
+            if (el && t[key] !== undefined) el.setAttribute(attr, t[key]);
+        }
+
+        // NAV
+        const navLinks = document.querySelectorAll('.nav-center a');
+        const navKeys = ['nav_languages','nav_documents','nav_why','nav_process','nav_reviews','nav_contact'];
+        navLinks.forEach((a, i) => { if (t[navKeys[i]]) a.textContent = t[navKeys[i]]; });
+        const navWa = document.querySelector('nav .btn-ghost');
+        if (navWa) navWa.textContent = t.nav_whatsapp;
+        const navQuote = document.querySelector('nav .btn-primary');
+        if (navQuote) navQuote.textContent = t.nav_quote;
+
+        // MOBILE NAV
+        const mobLinks = document.querySelectorAll('.mobile-nav ul li a');
+        mobLinks.forEach((a, i) => { if (t[navKeys[i]]) a.textContent = t[navKeys[i]]; });
+        const mobQuote = document.querySelector('.mobile-nav-actions .btn-primary');
+        if (mobQuote) mobQuote.textContent = t.mob_quote;
+        const mobWa = document.querySelector('.mobile-nav-actions .btn-ghost');
+        if (mobWa) mobWa.textContent = t.nav_whatsapp;
+
+        // HERO
+        const h1 = document.querySelector('.hero h1');
+        if (h1) {
+            h1.innerHTML = t.hero_h1_1 + '<br>' + t.hero_h1_2 + '<br><span class="accent">' + t.hero_h1_accent + '</span>';
+        }
+        setText('.hero-sub', 'hero_sub');
+        const heroCta1 = document.querySelector('.btn-hero-primary');
+        if (heroCta1) heroCta1.childNodes[0].textContent = t.hero_cta1;
+        const heroCta2 = document.querySelector('.btn-hero-ghost');
+        if (heroCta2) {
+            const svg = heroCta2.querySelector('svg');
+            heroCta2.textContent = '';
+            if (svg) heroCta2.appendChild(svg);
+            heroCta2.append(' ' + t.hero_cta2);
+        }
+        const ratingSpan = document.querySelector('.hero-rating span:last-child');
+        if (ratingSpan) ratingSpan.textContent = t.hero_years;
+
+        // TRUSTED
+        setText('.trusted-label', 'trusted_label');
+
+        // STATS
+        const statItems = document.querySelectorAll('.stat-item');
+        const statKeys = [
+            ['stat_years_n','stat_years_l'],['stat_lang_n','stat_lang_l'],
+            ['stat_clients_n','stat_clients_l'],['stat_rating_n','stat_rating_l']
+        ];
+        statItems.forEach((item, i) => {
+            const n = item.querySelector('.stat-n');
+            const l = item.querySelector('.stat-l');
+            if (n && t[statKeys[i][0]]) n.textContent = t[statKeys[i][0]];
+            if (l && t[statKeys[i][1]]) l.textContent = t[statKeys[i][1]];
+        });
+
+        // PROCESS
+        const processSection = document.getElementById('process');
+        if (processSection) {
+            const lbl = processSection.querySelector('.section-label');
+            if (lbl) lbl.textContent = t.process_label;
+            const h = processSection.querySelector('.section-h');
+            if (h) h.textContent = t.process_h;
+            const steps = processSection.querySelectorAll('.step');
+            const stepData = [
+                [t.step1_h, t.step1_p],[t.step2_h, t.step2_p],
+                [t.step3_h, t.step3_p],[t.step4_h, t.step4_p]
+            ];
+            steps.forEach((step, i) => {
+                const sh = step.querySelector('h4');
+                const sp = step.querySelector('p');
+                if (sh) sh.textContent = stepData[i][0];
+                if (sp) sp.textContent = stepData[i][1];
+            });
+        }
+
+        // LANGUAGES section label/h
+        const langSection = document.getElementById('languages');
+        if (langSection) {
+            const lbl = langSection.querySelector('.section-label');
+            if (lbl) lbl.textContent = t.lang_label;
+            const h = langSection.querySelector('.section-h');
+            if (h) h.textContent = t.lang_h;
+        }
+
+        // DOC TYPES
+        const docsSection = document.getElementById('doc-types');
+        if (docsSection) {
+            const lbl = docsSection.querySelector('.section-label');
+            if (lbl) lbl.textContent = t.docs_label;
+            const h = docsSection.querySelector('.section-h');
+            if (h) h.textContent = t.docs_h;
+            const cards = docsSection.querySelectorAll('.doc-card');
+            const docData = [
+                [t.doc1_tag, t.doc1_h, t.doc1_p],[t.doc2_tag, t.doc2_h, t.doc2_p],
+                [t.doc3_tag, t.doc3_h, t.doc3_p],[t.doc4_tag, t.doc4_h, t.doc4_p],
+                [t.doc5_tag, t.doc5_h, t.doc5_p],[t.doc6_tag, t.doc6_h, t.doc6_p]
+            ];
+            cards.forEach((card, i) => {
+                const tag = card.querySelector('.doc-tag');
+                const ch = card.querySelector('h3');
+                const cp = card.querySelector('p');
+                if (tag) tag.textContent = docData[i][0];
+                if (ch) ch.textContent = docData[i][1];
+                if (cp) cp.textContent = docData[i][2];
+            });
+        }
+
+        // WHY
+        const whySection = document.getElementById('why');
+        if (whySection) {
+            const lbl = whySection.querySelector('.section-label');
+            if (lbl) lbl.textContent = t.why_label;
+            const h = whySection.querySelector('.section-h');
+            if (h) h.textContent = t.why_h;
+            const features = whySection.querySelectorAll('.why-feature');
+            const whyData = [
+                [t.why1_h, t.why1_p],[t.why2_h, t.why2_p],[t.why3_h, t.why3_p],
+                [t.why4_h, t.why4_p],[t.why5_h, t.why5_p]
+            ];
+            features.forEach((feat, i) => {
+                const fh = feat.querySelector('h4');
+                const fp = feat.querySelector('p');
+                if (fh) fh.textContent = whyData[i][0];
+                if (fp) fp.textContent = whyData[i][1];
+            });
+        }
+
+        // REVIEWS
+        const revSection = document.getElementById('reviews');
+        if (revSection) {
+            const lbl = revSection.querySelector('.section-label');
+            if (lbl) lbl.textContent = t.reviews_label;
+            const h = revSection.querySelector('.section-h');
+            if (h) h.textContent = t.reviews_h;
+            const rtItems = revSection.querySelectorAll('.rt-item');
+            const rtData = [[t.rt1_n,t.rt1_l],[t.rt2_n,t.rt2_l],[t.rt3_n,t.rt3_l]];
+            rtItems.forEach((item, i) => {
+                const n = item.querySelector('.rt-n');
+                const l = item.querySelector('.rt-l');
+                if (n) n.textContent = rtData[i][0];
+                if (l) l.textContent = rtData[i][1];
+            });
+        }
+
+        // CONTACT
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            const lbl = contactSection.querySelector('.section-label');
+            if (lbl) lbl.textContent = t.contact_label;
+            const h = contactSection.querySelector('.section-h');
+            if (h) h.textContent = t.contact_h;
+
+            const cdetails = contactSection.querySelectorAll('.cdetail');
+            const cdKeys = [
+                [t.cd_phone_l, null],[t.cd_email_l, null],[t.cd_wa_l, null],
+                [t.cd_loc_l, t.cd_loc_v],[t.cd_hrs_l, t.cd_hrs_v]
+            ];
+            cdetails.forEach((cd, i) => {
+                const lbl2 = cd.querySelector('.cdetail-label');
+                if (lbl2) lbl2.textContent = cdKeys[i][0];
+                if (cdKeys[i][1]) {
+                    const val = cd.querySelector('.cdetail-val');
+                    if (val && !val.querySelector('a')) val.textContent = cdKeys[i][1];
+                }
+            });
+
+            const waH = contactSection.querySelector('.wa-strip-text h4');
+            if (waH) waH.textContent = t.wa_h;
+            const waP = contactSection.querySelector('.wa-strip-text p');
+            if (waP) waP.textContent = t.wa_p;
+            const waBtn = contactSection.querySelector('.wa-strip-btn');
+            if (waBtn) { const svg = waBtn.querySelector('svg'); waBtn.textContent = ''; if(svg) waBtn.appendChild(svg); waBtn.append(t.wa_btn); }
+
+            const formH = contactSection.querySelector('.contact-form h3');
+            if (formH) formH.textContent = t.form_h;
+
+            // Form labels
+            const fgLabels = contactSection.querySelectorAll('.fg label:not(.file-area)');
+            const labelKeys = [t.form_name, t.form_phone, t.form_email, t.form_langpair, t.form_doctype, t.form_msg, t.form_file];
+            fgLabels.forEach((lbl2, i) => { if (labelKeys[i]) lbl2.textContent = labelKeys[i]; });
+
+            // Selects placeholder
+            const selects = contactSection.querySelectorAll('select');
+            selects.forEach(sel => {
+                const first = sel.querySelector('option:first-child');
+                if (first) first.textContent = t.sel_lang_placeholder || '— Select —';
+            });
+
+            const fileSpan = contactSection.querySelector('#fileLabel');
+            if (fileSpan && fileSpan.textContent.indexOf('📎') === 0) fileSpan.textContent = t.file_area_text;
+
+            const submitBtn = contactSection.querySelector('.form-submit');
+            if (submitBtn) submitBtn.textContent = t.form_submit;
+            const formNote = contactSection.querySelector('.form-note');
+            if (formNote) formNote.textContent = t.form_note;
+        }
+
+        // CTA
+        const ctaSection = document.querySelector('.cta');
+        if (ctaSection) {
+            const ctaLbl = ctaSection.querySelector('.section-label');
+            if (ctaLbl) ctaLbl.textContent = t.cta_ready;
+            const ctaH = ctaSection.querySelector('h2');
+            if (ctaH) ctaH.textContent = t.cta_h;
+            const ctaP = ctaSection.querySelector('p');
+            if (ctaP) ctaP.textContent = t.cta_p;
+            const ctaBtns = ctaSection.querySelectorAll('a');
+            if (ctaBtns[0]) ctaBtns[0].textContent = t.cta_btn1;
+            if (ctaBtns[1]) ctaBtns[1].textContent = t.cta_btn2;
+            if (ctaBtns[2]) ctaBtns[2].textContent = t.cta_btn3;
+        }
+
+        // FOOTER
+        const footer = document.querySelector('footer');
+        if (footer) {
+            const fdesc = footer.querySelector('.footer-brand p');
+            if (fdesc) fdesc.textContent = t.footer_desc;
+
+            const colHeads = footer.querySelectorAll('.footer-col h5');
+            if (colHeads[0]) colHeads[0].textContent = t.footer_services;
+            if (colHeads[1]) colHeads[1].textContent = t.footer_languages;
+            if (colHeads[2]) colHeads[2].textContent = t.footer_contact;
+
+            const servLinks = footer.querySelectorAll('.footer-col:nth-child(2) a');
+            const servKeys = [t.fs_legal, t.fs_medical, t.fs_academic, t.fs_immigration, t.fs_apostille];
+            servLinks.forEach((a, i) => { if (servKeys[i]) a.textContent = servKeys[i]; });
+
+            const allLang = footer.querySelector('.footer-col:nth-child(3) li:last-child a');
+            if (allLang) allLang.textContent = t.fl_all;
+
+            const copy = footer.querySelector('.footer-bottom span:first-child');
+            if (copy) copy.textContent = t.footer_copy;
+            const cert = footer.querySelector('.cert-badge');
+            if (cert) cert.textContent = t.footer_cert;
+        }
+
+        // Store preference
+        localStorage.setItem('lingo_lang', lang);
+
+        // Update switcher button states
+        document.querySelectorAll('.lang-switch-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+    }
+
+    // Init switcher after DOM ready
+    function initLangSwitcher() {
+        // Build switcher HTML
+        const switcher = document.createElement('div');
+        switcher.id = 'lang-switcher';
+        switcher.style.cssText = 'display:flex;align-items:center;gap:3px;background:#f3f4f6;border-radius:8px;padding:3px;margin-right:4px';
+        switcher.innerHTML = `
+    <button class="lang-switch-btn active" data-lang="en" style="font-size:0.75rem;font-weight:600;padding:4px 9px;border:none;border-radius:6px;cursor:pointer;background:#fff;color:#111827;box-shadow:0 1px 2px rgba(0,0,0,0.1);transition:all 0.15s">EN</button>
+    <button class="lang-switch-btn" data-lang="mk" style="font-size:0.75rem;font-weight:600;padding:4px 9px;border:none;border-radius:6px;cursor:pointer;background:transparent;color:#6b7280;transition:all 0.15s">МК</button>
+    <button class="lang-switch-btn" data-lang="sq" style="font-size:0.75rem;font-weight:600;padding:4px 9px;border:none;border-radius:6px;cursor:pointer;background:transparent;color:#6b7280;transition:all 0.15s">AL</button>
+  `;
+
+        // Style for active button via JS toggle
+        const style = document.createElement('style');
+        style.textContent = `.lang-switch-btn.active{background:#fff!important;color:#111827!important;box-shadow:0 1px 2px rgba(0,0,0,0.1)!important}.lang-switch-btn:not(.active){background:transparent!important;color:#6b7280!important;box-shadow:none!important}`;
+        document.head.appendChild(style);
+
+        switcher.querySelectorAll('.lang-switch-btn').forEach(btn => {
+            btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+        });
+
+        // Insert before nav-right buttons
+        const navRight = document.querySelector('.nav-right');
+        if (navRight) navRight.insertBefore(switcher, navRight.firstChild);
+
+        // Also add to mobile nav
+        const mobActions = document.querySelector('.mobile-nav-actions');
+        if (mobActions) {
+            const mobSwitcher = switcher.cloneNode(true);
+            mobSwitcher.style.cssText = 'display:flex;align-items:center;gap:3px;background:#f3f4f6;border-radius:8px;padding:3px;margin-top:8px;width:fit-content';
+            mobSwitcher.querySelectorAll('.lang-switch-btn').forEach(btn => {
+                btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+            });
+            mobActions.appendChild(mobSwitcher);
+        }
+
+        // Apply saved preference
+        const saved = localStorage.getItem('lingo_lang');
+        if (saved && TRANSLATIONS[saved]) applyLang(saved);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLangSwitcher);
+    } else {
+        initLangSwitcher();
+    }
+    // MOBILE MENU
+    document.getElementById('hamburger').addEventListener('click',function(){
+        this.classList.toggle('open');
+        document.getElementById('mobileNav').classList.toggle('open');
+        const s=this.querySelectorAll('span');
+        if(this.classList.contains('open')){s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(5px,-5px)';}
+        else{s[0].style.transform='';s[1].style.opacity='';s[2].style.transform='';}
+    });
+    function closeMobile(){document.getElementById('mobileNav').classList.remove('open');const h=document.getElementById('hamburger');h.classList.remove('open');h.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});}
+
+    // LANG CAROUSEL
+    (function(){
+        const track=document.getElementById('langTrack');
+        let isDragging=false,startX=0,scrollLeft=0;
+        track.addEventListener('mousedown',e=>{isDragging=true;startX=e.pageX-track.offsetLeft;scrollLeft=track.scrollLeft;track.classList.add('dragging');});
+        document.addEventListener('mouseup',()=>{isDragging=false;track.classList.remove('dragging');});
+        track.addEventListener('mousemove',e=>{if(!isDragging)return;e.preventDefault();const x=e.pageX-track.offsetLeft;track.scrollLeft=scrollLeft-(x-startX)*1.5;});
+        document.getElementById('langPrev').onclick=()=>track.scrollBy({left:-200,behavior:'smooth'});
+        document.getElementById('langNext').onclick=()=>track.scrollBy({left:200,behavior:'smooth'});
+        let tX=0;
+        track.addEventListener('touchstart',e=>{tX=e.touches[0].clientX;},{passive:true});
+        track.addEventListener('touchmove',e=>{track.scrollLeft-=(e.touches[0].clientX-tX)*0.8;tX=e.touches[0].clientX;},{passive:true});
+    })();
+
+    // REVIEWS SLIDER
+    (function(){
+        const track=document.getElementById('reviewsTrack');
+        const slides=track.querySelectorAll('.review-slide');
+        const dotsEl=document.getElementById('revDots');
+        let cur=0;const total=slides.length;
+        dotsEl.innerHTML=Array.from({length:total},(_,i)=>`<button class="rev-dot${i===0?' active':''}" data-i="${i}"></button>`).join('');
+        const dots=dotsEl.querySelectorAll('.rev-dot');
+        dots.forEach(d=>d.addEventListener('click',()=>goTo(+d.dataset.i)));
+        function goTo(n){cur=(n+total)%total;track.style.transform=`translateX(-${cur*100}%)`;dots.forEach((d,i)=>d.classList.toggle('active',i===cur));}
+        document.getElementById('revPrev').onclick=()=>goTo(cur-1);
+        document.getElementById('revNext').onclick=()=>goTo(cur+1);
+        setInterval(()=>goTo(cur+1),6000);
+        let tSX=0;
+        track.parentElement.addEventListener('touchstart',e=>{tSX=e.touches[0].clientX;},{passive:true});
+        track.parentElement.addEventListener('touchend',e=>{const dx=tSX-e.changedTouches[0].clientX;if(Math.abs(dx)>40)goTo(dx>0?cur+1:cur-1);});
+    })();
+
+    // FILE INPUT
+    document.getElementById('fileInput').addEventListener('change',function(){
+        document.getElementById('fileLabel').textContent=this.files[0]?'📎 '+this.files[0].name:'📎 PDF, image, or Word document';
+    });
+
+    // SCROLL REVEAL
+    (function(){
+        const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    })();
+</script>
+</body>
+</html>
